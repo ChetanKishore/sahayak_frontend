@@ -50,11 +50,11 @@ function AppContent() {
   }, [logout]);
 
   return (
-    <div className="relative">
+    <div className="relative min-h-screen">
       <div
         className={`${isLoginDialogOpen ? 'blur-md max-h-[1000px] overflow-hidden' : ''} ${
           edit ? 'blur-md max-h-[1300px] overflow-hidden' : ''
-        } ${isNotifDialogOpen ? 'blur-md max-h-[1800px] overflow-hidden' : ''} bg-[#DEF0FF]`}
+        } ${isNotifDialogOpen ? 'blur-md max-h-[1800px] overflow-hidden' : ''} bg-gradient-to-br from-slate-50 to-blue-50 min-h-screen`}
       >
         {/* NavBar */}
         {!hideNavAndFooter && <NavBar />}

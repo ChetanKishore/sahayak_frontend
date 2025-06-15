@@ -51,19 +51,44 @@ const MedicalFundraisingSection = ({ campaign, progress, showPopup, setShowPopup
 
 
   return (
-    <div className="w-full lg:w-1/2 space-y-10 bg-white rounded-2xl shadow-lg p-6 sm:p-8">
+    <div className="w-full lg:w-1/2 space-y-8 bg-white rounded-3xl shadow-xl p-8 border border-gray-100">
       {/* Medical Details */}
-      <section>
-        <h2 className="flex items-center text-2xl font-bold text-blue-700 mb-4">
-          <FaMedkit className="mr-2" /> Medical Details
+      <section className="card p-6 bg-gradient-to-br from-blue-50 to-indigo-50 border-0">
+        <h2 className="flex items-center text-2xl font-bold text-blue-700 mb-6">
+          <div className="bg-blue-100 p-2 rounded-lg mr-3">
+            <FaMedkit className="text-blue-600" />
+          </div>
+          Medical Details
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <p><strong>Hospital:</strong> {hospital}</p>
-          <p><strong>Doctor:</strong> {doctor}</p>
-          <p><strong>Start Date:</strong> {startDate}</p>
-          <p><strong>End Date:</strong> {endDate}</p>
-          <p><strong>Duration:</strong> {duration} days</p>
-          <p><strong>Status:</strong> {status}</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="bg-white p-4 rounded-xl shadow-sm">
+            <p className="text-sm text-gray-500 font-medium">Hospital</p>
+            <p className="text-gray-800 font-semibold mt-1">{hospital}</p>
+          </div>
+          <div className="bg-white p-4 rounded-xl shadow-sm">
+            <p className="text-sm text-gray-500 font-medium">Doctor</p>
+            <p className="text-gray-800 font-semibold mt-1">{doctor}</p>
+          </div>
+          <div className="bg-white p-4 rounded-xl shadow-sm">
+            <p className="text-sm text-gray-500 font-medium">Start Date</p>
+            <p className="text-gray-800 font-semibold mt-1">{startDate}</p>
+          </div>
+          <div className="bg-white p-4 rounded-xl shadow-sm">
+            <p className="text-sm text-gray-500 font-medium">End Date</p>
+            <p className="text-gray-800 font-semibold mt-1">{endDate}</p>
+          </div>
+          <div className="bg-white p-4 rounded-xl shadow-sm">
+            <p className="text-sm text-gray-500 font-medium">Duration</p>
+            <p className="text-gray-800 font-semibold mt-1">{duration} days</p>
+          </div>
+          <div className="bg-white p-4 rounded-xl shadow-sm">
+            <p className="text-sm text-gray-500 font-medium">Status</p>
+            <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold mt-1 ${
+              status === 'Active' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'
+            }`}>
+              {status}
+            </span>
+          </div>
         </div>
       </section>
 
@@ -133,35 +158,65 @@ const MedicalFundraisingSection = ({ campaign, progress, showPopup, setShowPopup
           </div>
         </div>
 
-        <div className="p-4 border rounded-xl shadow-sm">
-          <h3 className="font-bold text-lg text-green-700 mb-2">Live Donations</h3>
-          <ul className="text-sm text-gray-600 space-y-1">
+        <div className="card p-6 bg-gradient-to-br from-green-50 to-emerald-50 border-0">
+          <h3 className="flex items-center font-bold text-xl text-green-700 mb-4">
+            <div className="bg-green-100 p-2 rounded-lg mr-3">
+              <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+              </svg>
+            </div>
+            Live Donations
+          </h3>
+          <div className="space-y-3 max-h-64 overflow-y-auto">
             {liveDonations.length > 0 ? (
               liveDonations.map((donation, idx) => (
-                <li key={idx}>
-                  <strong>{donation.firstName} {donation.lastName}:</strong> {donation.currency} {Number(donation.amount).toLocaleString()}
-                </li>
+                <div key={idx} className="bg-white p-4 rounded-xl shadow-sm flex justify-between items-center">
+                  <div>
+                    <p className="font-semibold text-gray-800">{donation.firstName} {donation.lastName}</p>
+                    <p className="text-sm text-gray-500">Recently donated</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="font-bold text-green-600">{donation.currency} {Number(donation.amount).toLocaleString()}</p>
+                  </div>
+                </div>
               ))
             ) : (
-              <li>No donations yet.</li>
+              <div className="text-center py-8">
+                <svg className="w-12 h-12 text-gray-300 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+                </svg>
+                <p className="text-gray-500">No donations yet. Be the first to contribute!</p>
+              </div>
             )}
-          </ul>
+          </div>
         </div>
 
       </section>
 
       {/* Login & Raise Concern */}
       <div className="grid sm:grid-cols-2 gap-6 mt-10">
-        <div className="p-6 bg-blue-50 rounded-xl shadow">
-          <h3 className="font-bold text-blue-700 text-lg mb-2">Login to Contribute More</h3>
-          <p className="text-sm text-gray-700">Create an account to track your donations, share campaigns, and more.</p>
+        <div className="card p-6 bg-gradient-to-br from-blue-50 to-indigo-50 border-0 hover:shadow-xl transition-all duration-300">
+          <div className="flex items-center mb-4">
+            <div className="bg-blue-100 p-2 rounded-lg mr-3">
+              <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+            </div>
+            <h3 className="font-bold text-blue-700 text-lg">Login to Contribute More</h3>
+          </div>
+          <p className="text-gray-700 mb-4">Create an account to track your donations, share campaigns, and more.</p>
+          <button className="btn-primary w-full">Get Started</button>
         </div>
 
-        <div className="p-6 bg-red-50 rounded-xl shadow">
-          <h3 className="flex items-center text-lg font-bold text-red-700 mb-2">
-            <FaExclamationTriangle className="mr-2" /> Raise a Concern
-          </h3>
-          <p className="text-sm text-gray-700">Found incorrect information? Raise a concern to notify us.</p>
+        <div className="card p-6 bg-gradient-to-br from-red-50 to-pink-50 border-0 hover:shadow-xl transition-all duration-300">
+          <div className="flex items-center mb-4">
+            <div className="bg-red-100 p-2 rounded-lg mr-3">
+              <FaExclamationTriangle className="text-red-600" />
+            </div>
+            <h3 className="font-bold text-red-700 text-lg">Raise a Concern</h3>
+          </div>
+          <p className="text-gray-700 mb-4">Found incorrect information? Raise a concern to notify us.</p>
+          <button className="btn-secondary w-full border-red-500 text-red-600 hover:bg-red-500 hover:text-white">Report Issue</button>
         </div>
       </div>
     </div>

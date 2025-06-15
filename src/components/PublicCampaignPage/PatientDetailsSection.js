@@ -143,8 +143,12 @@ const PatientDetailsSection = ({ campaign }) => {
             </div>
 
             {/* Title and Donate Button */}
-            <h3 className="text-lg font-bold text-gray-800 text-center mt-3">Support this Cause</h3>
-            <button className="mt-3 w-full bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg shadow transition duration-300">
+            <h3 className="text-xl font-bold text-gray-800 text-center mt-4">Support this Cause</h3>
+            <p className="text-sm text-gray-600 text-center mt-2">Every contribution makes a difference</p>
+            <button className="mt-4 w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 font-semibold">
+              <svg className="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
               Donate Now
             </button>
           </div>

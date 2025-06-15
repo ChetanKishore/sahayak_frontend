@@ -186,10 +186,39 @@ const FundForm = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="hidden md:flex flex-col gap-4 items-center justify-center"
+            className="hidden lg:flex flex-col gap-8 items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-8"
           >
-            <img src={healthcareSvg} alt="Healthcare Support" className="w-40 md:w-52 lg:w-64 animate-bounce" />
-            <img src={crowdfundingSvg} alt="Crowdfunding" className="w-40 md:w-52 lg:w-64 animate-pulse" />
+            <div className="text-center mb-6">
+              <h3 className="text-2xl font-bold gradient-text mb-2">We're Here to Help</h3>
+              <p className="text-gray-600">Every step of your fundraising journey</p>
+            </div>
+            <motion.img 
+              src={healthcareSvg} 
+              alt="Healthcare Support" 
+              className="w-48 lg:w-56 animate-float" 
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            />
+            <motion.img 
+              src={crowdfundingSvg} 
+              alt="Crowdfunding" 
+              className="w-48 lg:w-56 animate-float" 
+              style={{ animationDelay: '1s' }}
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            />
+            <div className="text-center mt-6">
+              <div className="flex items-center justify-center space-x-4 text-sm text-gray-500">
+                <div className="flex items-center">
+                  <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                  Secure & Safe
+                </div>
+                <div className="flex items-center">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                  24/7 Support
+                </div>
+              </div>
+            </div>
           </motion.div>
         </div>
       ) : (
