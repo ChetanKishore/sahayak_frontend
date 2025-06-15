@@ -1,1 +1,2 @@
-# sahayak_frontend
+# sahayak-website
+Website for the fundraiser website Sahayak.
